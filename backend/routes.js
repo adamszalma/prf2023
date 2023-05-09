@@ -42,6 +42,18 @@ router.route('/login').post((req, res, next) => {
     }
 });
 
+//Logout
+router.route('/logout').post((req, res, next) => {
+    if (req.isAuthenticated()) {
+        req.logOut((err) => {
+            if (err) return res.status(400).send('Sikertelen kijelentkezes.');
+            return res.status(200).send('Kijelentkezes sikeres.');
+        });
+    } else {
+        return res.status(400).send('Nem is volt bejelentkezve felhasznalo.');
+    }
+});
+
 //Pets - get
 router.route('/pets').get(async (req, res, next) => {
     try {
