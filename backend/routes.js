@@ -64,6 +64,26 @@ router.route('/pets').get(async (req, res, next) => {
         console.log(err);
         return res.status(500).send('Hiba tortent.');
     }
+}).put(async (req, res, next) => {
+    try {
+        if (req.body.id && req.body.petName && req.body.petType) {
+            const dbPet = await petModel.findOne({id: req.body.id});
+            if (dbPet) {
+                dbPet.petName = req.body.petName;
+                dbPet.petType = req.body.petType;
+                await dbPet.save();
+
+                return res.status(200).send('Sikeres frissites tortent.');
+            } else {
+                return res.status(400).send('Nincs ilyen id.');
+            }
+        } else {
+            return res.status(400).send('Hibas keres! Type, name es id kotelezo.');
+        }
+    } catch (err) {
+        console.log(err);
+        return res.status(500).send('Hiba tortent.');
+    }
 }).delete(async (req, res, next) => {
     try {
         if (req.body.id) {
@@ -79,7 +99,6 @@ router.route('/pets').get(async (req, res, next) => {
             return res.status(400).send('Hibas keres! Id kotelezo.');
         }
     } catch (err) {
-        console.log(err);
         return res.status(500).send('Hiba tortent.');
     }
 });
