@@ -1,1 +1,60 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { 
+    height: 100%;
+    background: #4d4d4d;
+    color: white;
+  }
+  body { 
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+  }
+  
+  .centering {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: stretch;
+  }
+  
+  .reg-card,
+  .log-card {
+    width: 100vw;
+    height: 100vh;
+    background: #e6e6e6;
+  }
+  
+  @media (min-width: 768px) {
+  
+    .reg-card,
+    .log-card {
+      max-width: 33em;
+      min-height: 30em;
+      height: auto;
+    }
+  }
+  
+  .max-width {
+      width: 100%;
+  }
+  
+  .form-title {
+      text-align: center;
+  }
+  
+  .alert {
+    text-align: center;
+    color: rgb(185, 53, 36);
+    background-color: rgb(245, 219, 215);
+    border: 1px solid rgb(245, 176, 182);
+    border-radius: 0;
+    height: 30px;
+    line-height: 30px;
+    box-shadow: none;
+  }
+  
+  .dialog-button {
+    display: flex;
+    flex-direction: column;
+  }
+  
