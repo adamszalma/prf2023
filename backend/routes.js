@@ -64,6 +64,24 @@ router.route('/pets').get(async (req, res, next) => {
         console.log(err);
         return res.status(500).send('Hiba tortent.');
     }
+}).delete(async (req, res, next) => {
+    try {
+        if (req.body.id) {
+            const dbPet = await petModel.findOne({id: req.body.id});
+            if (dbPet) {
+                await dbPet.deleteOne();
+
+                return res.status(200).send('Sikeres torles.');
+            } else {
+                return res.status(400).send('Nincs ilyen id.');
+            }
+        } else {
+            return res.status(400).send('Hibas keres! Id kotelezo.');
+        }
+    } catch (err) {
+        console.log(err);
+        return res.status(500).send('Hiba tortent.');
+    }
 });
 
 module.exports = router;
