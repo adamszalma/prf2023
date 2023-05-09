@@ -24,6 +24,7 @@ mongoose.connection.on('error', (err) => {
 
 require('./user.model');
 const userModel = mongoose.model('user');
+require('./pet.model');
 
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({extended: true}));

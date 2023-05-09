@@ -3,6 +3,8 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const passport = require('passport');
 const userModel = mongoose.model('user');
+const petModel = mongoose.model('pet');
+const { randomUUID } = require('crypto');
 
 // Register
 router.route('/register').post(async (req, res, next) => {
@@ -36,6 +38,30 @@ router.route('/login').post((req, res, next) => {
             return res.status(400).send('Hibas keres! Username es password kotelezo.');
         }
     } catch (err) {
+        return res.status(500).send('Hiba tortent.');
+    }
+});
+
+//Pets - get
+router.route('/pets').get(async (req, res, next) => {
+    try {
+        const pets = await petModel.find();
+        return res.status(200).send(pets);
+    } catch (err) {
+        return res.status(500).send('Hiba tortent.');
+    }
+}).post(async (req, res, next) => {
+    //Pets - add
+    try {
+        if (req.body.petName && req.body.petType) {
+            const pet = new petModel({id: randomUUID(), petName: req.body.petName, petType: req.body.petType});
+            await pet.save();
+            return res.status(200).send('Kisllat sikeresen hozzadva.');
+        } else {
+            return res.status(400).send('Hibas keres! Type es name kotelezo.');
+        }
+    } catch (err) {
+        console.log(err);
         return res.status(500).send('Hiba tortent.');
     }
 });
