@@ -23,7 +23,6 @@ router.route('/register').post(async (req, res, next) => {
 
 //Login
 router.route('/login').post((req, res, next) => {
-    console.log(req.body);
     try {
         if (req.body.username && req.body.password) {
             passport.authenticate('local', function(error, user) {
