@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const bcryptjs = require('bcryptjs');
 
 var userSchema = new mongoose.Schema({
-    email: {type: String, required: true, unique: true},
+    username: {type: String, unique: true, required: true, lowercase: true},
     password: {type: String, required: true},
 }, {collection: 'liveUsers'});
 
@@ -27,5 +27,12 @@ userSchema.pre('save', function(next) {
         return next();
     }
 });
+
+
+userSchema.methods.comparePasswords = function(password, next) {
+    bcryptjs.compare(password, this.password, function(err, isMatch) {
+        next(err, isMatch);
+    })
+}
 
 mongoose.model('user', userSchema);

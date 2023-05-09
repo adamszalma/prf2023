@@ -9,6 +9,7 @@ const localStrategy = require('passport-local').Strategy;
 
 const app = express();
 const port = 3000;
+// Change this to the actual url.
 const dbUrl = 'mongodb+srv://admin:teszt123@prf-cluster.e4w62n9.mongodb.net/?retryWrites=true'
 
 mongoose.connect(dbUrl);
@@ -35,10 +36,10 @@ app.use(cors(
     }
 ));
 
-passport.use('local', new localStrategy(async function (email, password, done) {
+passport.use('local', new localStrategy(async function (username, password, done) {
     try {
-        const dbUser = await userModel.findOne({email: email});
-        if(!dbUser) return done('Hiba nincs ilyen email cim.', null) 
+        const dbUser = await userModel.findOne({username: username});
+        if(!dbUser) return done('Nincs ilyen felhasznalonev.', null) 
         dbUser.comparePasswords(password, function(error, isMatch) {
             if (error) return done(error, false);
             if (!isMatch) return done('Hibas jelszo.', false);
