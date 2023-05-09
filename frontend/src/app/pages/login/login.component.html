@@ -2,15 +2,15 @@
     <mat-card class="log-card">
         <h3 class="form-title"><b>BEJELENTKEZÉS</b></h3>
         <label>E-mail cím</label>
-        <input type="email" name="email" matInput placeholder="example@example.com" [(ngModel)]="email">
+        <input type="email" name="email" placeholder="example@example.com" [(ngModel)]="email">
         <label>Jelszó</label>
-        <input type="password" name="password" matInput minlength="6" placeholder="Jelszó" [(ngModel)]="password">
+        <input type="password" name="password" minlength="6" placeholder="Jelszó" [(ngModel)]="password">
         <!-- <mat-card id="alertCard" class="alert" *ngIf="alertMessage">
             {{alertMessage}}
         </mat-card> -->
         <br>
         <div><button type="submit" mat-raised-button color="primary" class="max-width">BEJELENTKEZÉS</button></div>
         <br>
-        <button mat-raised-button color="accent" class="max-width" [routerLink]="[ '/register' ]">REGISZTRÁCIÓ</button>
+        <button class="max-width" [routerLink]="[ '/register' ]">REGISZTRÁCIÓ</button>
     </mat-card>
 </div>
