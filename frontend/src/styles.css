@@ -9,6 +9,10 @@ html, body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
   }
+
+  .def-margin {
+    margin: 10px;
+  }
   
   .centering {
       display: flex;

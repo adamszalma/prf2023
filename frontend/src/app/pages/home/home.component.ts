@@ -9,6 +9,8 @@ import { Pet } from 'src/models/pet.model';
 })
 export class HomeComponent {
   petsArray: Pet[] = [];
+  newPetType = '';
+  newPetName = '';
 
   constructor (private connectionService: ConnectionService) {
 
@@ -39,5 +41,17 @@ export class HomeComponent {
     }, error => {
       console.log(error);
     });
+  }
+
+  newPet() {
+    if (this.newPetName != '' && this.newPetType != '') {
+      this.connectionService.newPet(this.newPetType, this.newPetName).subscribe(result => {
+        this.updatePetsArray();
+        this.newPetName = '';
+        this.newPetType = '';
+      }, error => {
+        console.log(error);
+      });
+    }
   }
 }

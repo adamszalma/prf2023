@@ -1,17 +1,24 @@
 <div class="centering-hor">
     <table>
         <tr>
-            <td>Kisallat tipusa</td>
-            <td>Kisllat neve</td>
-            <td>Torles</td>
+            <td>Háziállat fajtája</td>
+            <td>Háziállat neve</td>
+            <td>Törlés</td>
         </tr>
        <tr *ngFor="let x of this.petsArray">
         <td> {{ x.petType }}</td>
         <td> {{ x.petName }}</td>
-        <td><button (click)="deletePet(x.id)">torles</button></td>
+        <td><button (click)="deletePet(x.id)">törlés</button></td>
        </tr>
     </table>
 </div>
 <div class="centering-hor max-width">
+    <input class="def-margin" type="text" name="petType" placeholder="háziállat fajtája" [(ngModel)]="newPetType">
+    <input class="def-margin" type="text" name="petName" placeholder="háziállat neve" [(ngModel)]="newPetName">
+</div>
+<div class="centering-hor max-width def-margin" (click)="newPet()">
+    <button>ÚJ HOZZÁADÁSA</button>
+</div>
+<div class="centering-hor max-width def-margin">
     <button [routerLink]="[ '/login' ]">KIJELENTKEZÉS</button>
 </div>
