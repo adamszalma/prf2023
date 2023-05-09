@@ -1,3 +1,15 @@
-<div style="width: 10%;" class="centering">
-    <button class="max-width" [routerLink]="[ '/login' ]">KIJELENTKEZÉS</button>
+<div class="centering-hor">
+    <table>
+        <tr>
+            <td>Kisallat tipusa</td>
+            <td>Kisllat neve</td>
+        </tr>
+       <tr *ngFor="let x of this.petsArray">
+        <td> {{ x.petType }}</td>
+        <td> {{ x.petName }}</td>
+       </tr>
+    </table>
+</div>
+<div class="centering-hor max-width">
+    <button [routerLink]="[ '/login' ]">KIJELENTKEZÉS</button>
 </div>

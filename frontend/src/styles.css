@@ -16,6 +16,11 @@ html, body {
       justify-content: center;
       height: stretch;
   }
+
+  .centering-hor {
+    display: flex;
+    justify-content: center;
+  }
   
   .reg-card,
   .log-card {
