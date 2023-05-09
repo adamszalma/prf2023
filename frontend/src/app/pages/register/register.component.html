@@ -1,1 +1,16 @@
-<p>register works!</p>
+<div class="centering">
+    <mat-card class="log-card">
+        <h3 class="form-title"><b>REGISZTRÁCIÓ</b></h3>
+        <label>Felhasználónév</label>
+        <input type="text" name="username" placeholder="user123" [(ngModel)]="username">
+        <label>Jelszó</label>
+        <input type="password" name="password" placeholder="jelszó" [(ngModel)]="password">
+        <br>
+        <button type="submit" class="max-width" (click)="register()">REGISZTRÁCIÓ</button>
+        <br>
+        <button class="max-width" [routerLink]="[ '/login' ]">BEJELENTKEZÉS</button>
+        <br>
+        <h5 style="color: red;">{{ this.alertMessage }}</h5>
+        <h5 style="color: green;">{{ this.successMessage }}</h5>
+    </mat-card>
+</div>
