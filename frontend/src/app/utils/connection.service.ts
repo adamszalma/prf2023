@@ -11,4 +11,8 @@ export class ConnectionService {
   getPets() {
     return this.http.get('http://localhost:3000/api' + '/pets');
   }
+
+  deletePet(id: string) {
+    return this.http.request('delete', 'http://localhost:3000/api' + '/pets', {body: {id: id}, responseType: 'text'});
+  }
 }

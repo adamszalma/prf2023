@@ -32,4 +32,12 @@ export class HomeComponent {
       console.log(error);
     });
   }
+
+  deletePet(id: string) {
+    this.connectionService.deletePet(id).subscribe(result => {
+      this.updatePetsArray();
+    }, error => {
+      console.log(error);
+    });
+  }
 }
