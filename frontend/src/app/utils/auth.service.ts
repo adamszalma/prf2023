@@ -15,4 +15,8 @@ export class AuthService {
    register(username: string, password: string) {
     return this.http.post('http://localhost:3000/api' + '/register', {username: username, password: password}, {responseType: 'text'});
    }
+
+   logout() {
+    return this.http.post('http://localhost:3000/api' + '/logout', {responseType: 'text', withCredentials: true});
+   }
 }

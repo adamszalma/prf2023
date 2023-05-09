@@ -31,4 +31,15 @@ export class LoginComponent {
       });
     }
   }
+
+  ngOnInit(): void {
+    if (localStorage.getItem('user')) {
+      localStorage.removeItem('user');
+      this.authService.logout().subscribe(msg => {
+        console.log(msg);
+      }, error => {
+        console.log(error);
+      });
+    }
+  }
 }
