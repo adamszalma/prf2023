@@ -6,6 +6,7 @@ const mongoose  = require('mongoose');
 const passport = require('passport');
 const expressSession = require('express-session');
 const localStrategy = require('passport-local').Strategy;
+const path = require('path');
 
 const app = express();
 const port = 3000;
@@ -66,6 +67,11 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/api', require('./routes'));
+
+app.use(express.static(path.join(__dirname, 'public')))
+.set('views', path.join(__dirname, 'views'))
+.set('view engine', 'ejs')
+.get('/', (req, res) => res.render('pages/index'))
 
 app.use((req, res, next) => {
     res.status(404).send('A kert eroforras nem talalhato.');
