@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/utils/auth.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class LoginComponent {
   password: string;
   alertMessage: string;
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private router: Router) {
     this.username = '';
     this.password = '';
     this.alertMessage = '';
@@ -23,6 +24,7 @@ export class LoginComponent {
         console.log(msg);
         localStorage.setItem('user', this.username);
         this.alertMessage = '';
+        this.router.navigate(['/home']);
       }, error => {
         this.alertMessage = error.error;
         console.log(error);
