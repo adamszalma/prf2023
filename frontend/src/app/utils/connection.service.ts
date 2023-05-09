@@ -19,4 +19,8 @@ export class ConnectionService {
   newPet(petType: string, petName: string) {
     return this.http.post('http://localhost:3000/api' + '/pets', {petType: petType, petName:petName}, {responseType: 'text'});
   }
+
+  updatePet(id: string, petType: string, petName: string) {
+    return this.http.put('http://localhost:3000/api' + '/pets', {id: id, petType: petType, petName:petName}, {responseType: 'text'});
+  }
 }

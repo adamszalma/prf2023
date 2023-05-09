@@ -54,4 +54,32 @@ export class HomeComponent {
       });
     }
   }
+
+  updatePet(id: string, currentPetName: string, currentPetType: string) {
+    if (this.newPetName != '' && this.newPetType != '') {
+      this.connectionService.updatePet(id, this.newPetType, this.newPetName).subscribe(result => {
+        this.updatePetsArray();
+        this.newPetName = '';
+        this.newPetType = '';
+      }, error => {
+        console.log(error);
+      });
+    } else if (this.newPetName != '') {
+      this.connectionService.updatePet(id, currentPetType, this.newPetName).subscribe(result => {
+        this.updatePetsArray();
+        this.newPetName = '';
+        this.newPetType = '';
+      }, error => {
+        console.log(error);
+      });
+    } else if (this.newPetType != '') {
+      this.connectionService.updatePet(id, this.newPetType, currentPetName).subscribe(result => {
+        this.updatePetsArray();
+        this.newPetName = '';
+        this.newPetType = '';
+      }, error => {
+        console.log(error);
+      });
+    }
+  }
 }

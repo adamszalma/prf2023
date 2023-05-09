@@ -4,11 +4,13 @@
             <td>Háziállat fajtája</td>
             <td>Háziállat neve</td>
             <td>Törlés</td>
+            <td>Módosítás</td>
         </tr>
        <tr *ngFor="let x of this.petsArray">
         <td> {{ x.petType }}</td>
         <td> {{ x.petName }}</td>
         <td><button (click)="deletePet(x.id)">törlés</button></td>
+        <td><button (click)="updatePet(x.id, x.petName, x.petType)">módosítás</button></td>
        </tr>
     </table>
 </div>
